@@ -121,14 +121,14 @@ select * from issued_status where issued_id='IS121';
 ```
 ****Task 4: Retrieve All Books Issued by a Specific Employee****
 
-    Select all books issued by the employee with emp_id = 'E101'
+    Objective: Select all books issued by the employee with emp_id = 'E101'
 ```sql
 select * from books join issued_status on books.isbn = issued_status.issued_book_isbn 
         join employees on employees.emp_id = issued_status.issued_emp_id where employees.emp_id='E101';
   ```             
 ****Task 5: List members Who Have Issued More Than One Book****
 
-     Use GROUP BY to find members who have issued more than one book
+    Objective: Use GROUP BY to find members who have issued more than one book
 ```sql
 select member_id,member_name, count(issued_book_isbn) as books_issued from issued_status 
                     join members on  members.member_id = issued_status.issued_member_id
@@ -137,7 +137,7 @@ select member_id,member_name, count(issued_book_isbn) as books_issued from issue
                       ###3. CTAS (Create Table As Select)
 ****Task 6: Create Summary Tables** 
 
-    Use CTAS to generate new tables based on query results - each book and total book issued count
+    Objective: Use CTAS to generate new tables based on query results - each book and total book issued count
 ```sql   
  select * from books ;
  create table book_issue_summary as
@@ -164,9 +164,10 @@ select * from members where reg_date < current_date()- interval 180 day;
 ```
 ****Task 10. List Employees with Their Branch Manager's Name and their branch details****
 ```sql
-select emp.emp_id, emp.emp_name,emp.position, emp.salary,branch.branch_id,branch.branch_address,branch.manager_id,m.emp_name as manager_name from branch 
-   join employees as emp on emp.branch_id = branch.branch_id
-   join employees as m on m.emp_id = branch.manager_id;
+select emp.emp_id, emp.emp_name,emp.position,emp.salary,branch.branch_id,
+branch.branch_address,branch.manager_id,m.emp_name as manager_name from branch 
+join employees as emp on emp.branch_id = branch.branch_id
+join employees as m on m.emp_id = branch.manager_id;
 ```
 ***Task 11. Create a Table of Books with Rental Price Above a Certain Threshold****
 ```sql  
@@ -182,7 +183,8 @@ where return_status.return_id is null;
 ```  
 ****Task 13: Identify Members with Overdue Books****
 
-Write a query to identify members who have overdue books (assume a 30-day return period) & Display the member's_id, member's name, book title, issue date, and days overdue
+Objective: Write a query to identify members who have overdue books (assume a 30-day return period) & 
+Display the member's_id, member's name, book title, issue date, and days overdue
 ```sql
 select i.issued_member_id, m.member_name,bk.book_title,i.issued_date,
 curdate()-i.issued_date as overduedays 
@@ -199,8 +201,10 @@ order by 1
 ```
 ****Task 14: Update Book Status on Return****
 
-Write a query to update the status of books in the books table to "Yes" when they are returned (based on entries in the return_status table
-Create Stored Procedure: Task of this stored procedure is as soon as someone enters a record in the return_status table,it should reflect in the book table with the status changing to 'yes'
+    Objective: Write a query to update the status of books in the books table to "Yes" 
+	           when they are returned (based on entries in the return_status table)
+    Create Stored Procedure: Task of this stored procedure is, as soon as someone enters a record in the return_status table,
+	                         it should reflect in the book table with the status changing to 'yes'
  ```sql    
 delimiter $$
 create procedure add_return_records
@@ -276,7 +280,8 @@ group by b.branch_id, b.manager_id;
 ```
 ****Task 16: CTAS: Create a Table of Active Members**** 
 
-Use the CREATE TABLE AS (CTAS) statement to create a new table active_members containing members who have issued at least one book in the last 2 months.
+    Objective: Use the CREATE TABLE AS (CTAS) statement to create a new table active_members containing members 
+	           who have issued at least one book in the last 2 months.
 ```sql
 create table active_members as
 select * from members 
