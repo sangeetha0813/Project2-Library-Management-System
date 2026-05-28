@@ -190,9 +190,8 @@ where r.return_date is null and
 order by 1
 ```
 ****Task 14: Update Book Status on Return****  
-## Write a query to update the status of books in the books table to "Yes" when they are returned (based on entries in the return_status table
-## Create Stored Procedure :
-     Task of this stored procedure is as soon as someone enters a record in the return_status table,it should reflect in the book table with the status changing to 'yes'
+Write a query to update the status of books in the books table to "Yes" when they are returned (based on entries in the return_status table
+Create Stored Procedure: Task of this stored procedure is as soon as someone enters a record in the return_status table,it should reflect in the book table with the status changing to 'yes'
  ```sql    
 delimiter $$
 create procedure add_return_records
@@ -355,9 +354,9 @@ CALL Book_availability
     'E101'
 );
 ```
-****Task 19: Overall Overdue books and fines**
-**Objective: Create a CTAS (Create Table As Select) query to identify overdue books and calculate fines.**
- Description: Write a CTAS query to create a new table that lists each member and the books they have issued but not returned within 30 days. The table should include:
+****Task 19: Overdue books and fines**
+    Objective: Create a CTAS (Create Table As Select) query to identify overdue books and calculate fines
+    Description: Write a CTAS query to create a new table that lists each member and the books they have issued but not returned within 30 days. The table should include:
     The number of overdue books.
     The total fines, with each day's fine calculated at $0.50.
     The number of books issued by each member.
