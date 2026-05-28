@@ -1,4 +1,4 @@
-# Project2-Library-Management-System
+# Project2-Library-Management-System-Mysql
 ## Project Overview
 This project demonstrates the implementation of a Library Management System using SQL. It includes creating and managing tables, performing CRUD operations, and executing advanced SQL queries.
 ## Objectives
