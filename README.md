@@ -113,7 +113,7 @@ update members set member_address = '244 center st' where member_id= 'C101';
 select * from members where member_id = 'C101';
 ```
 ****Task 3: Delete a Record from the Issued Status Table****
-    Objective: Delete the record with issued_id = 'IS121' from the issued_status table
+    ## Objective: Delete the record with issued_id = 'IS121' from the issued_status table
 ```sql
 delete from issued_status where issued_id='IS121';
 select * from issued_status where issued_id='IS121';
