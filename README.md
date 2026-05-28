@@ -142,7 +142,8 @@ select member_id,member_name, count(issued_book_isbn) as books_issued from issue
  ```
                      ### 4. Data Analysis & Findings
 ****Task 7. **Retrieve All Books in a Specific Category****
-**Objective:The following SQL queries were used to address specific questions**
+
+  Objective:The following SQL queries were used to address specific questions
 ```sql
 select * from books where category='Classic';
 ```                        
@@ -359,18 +360,13 @@ CALL Book_availability
     'E101'
 );
 ```
-****Task 19: Overdue books and fines**
+****Task 19: Overdue books and fines****
 
     Objective: Create a CTAS (Create Table As Select) query to identify overdue books and calculate fines
     Description: Write a CTAS query to create a new table that lists each member and the books they have issued but not returned within 30 days. The table should include:
-    The number of overdue books.
-    The total fines, with each day's fine calculated at $0.50.
-    The number of books issued by each member.
-    The resulting table should show:
-    Member ID
-    Number of overdue books
-    Total fines
-
+    The number of overdue books.The total fines, with each day's fine calculated at $0.50.The number of books issued by each member.
+    The resulting table should show: Member ID,Number of overdue books,Total fines	
+```sql
 create table over_due_books 
 select 
    m.member_id, 
